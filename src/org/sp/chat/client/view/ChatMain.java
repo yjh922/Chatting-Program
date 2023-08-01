@@ -21,7 +21,7 @@ import javax.swing.border.LineBorder;
 public class ChatMain extends JFrame{
 	JPanel p_center;//각 컨텐츠 페이지들이 들어올 빈 영역
 	JPanel p_south;//내비가 들어올 영역
-	String[] naviIcon= {"res/friend1.png","res/chatting1.png","res/mypage.png"};
+	String[] naviIcon= {"res/friend.png","res/chatting.png","res/mypage.png"};
 	ArrayList<JLabel> navi;//아이콘 이미지를 담게 될 라벨들
 	
 	
@@ -45,8 +45,9 @@ public class ChatMain extends JFrame{
 		
 		
 		//스타일
-		p_south.setBorder(new LineBorder(Color.LIGHT_GRAY, 1));
-		p_center.setBackground(Color.YELLOW);
+		//p_south.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
+		p_south.setPreferredSize(new Dimension(380,50));
+		
 		
 		//조립
 		for(int i=0; i<pages.length; i++) {
@@ -56,7 +57,7 @@ public class ChatMain extends JFrame{
 		add(p_center);
 		add(p_south, BorderLayout.SOUTH);
 		
-		setSize(400,600);
+		setSize(380,600);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -89,9 +90,9 @@ public class ChatMain extends JFrame{
 			try {
 				BufferedImage buffImg = ImageIO.read(url);
 				Image image=buffImg;
-				image=image.getScaledInstance(70, 50, Image.SCALE_SMOOTH);
+				image=image.getScaledInstance(40, 25, Image.SCALE_SMOOTH);
 				JLabel la_icon = new JLabel(new ImageIcon(image));
-				la_icon.setPreferredSize(new Dimension(120,50));
+				la_icon.setPreferredSize(new Dimension(115,40));
 				navi.add(la_icon);
 				p_south.add(la_icon);
 				

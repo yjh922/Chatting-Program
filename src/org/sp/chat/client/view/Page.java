@@ -13,14 +13,14 @@ public class Page extends JPanel{
 		p_north = new JPanel();
 		p_center=new JPanel();
 		
-		p_north.setPreferredSize(new Dimension(380, 50));
+		p_north.setPreferredSize(new Dimension(330,50));
 		
 		setLayout(new BorderLayout());
 		
 		add(p_north, BorderLayout.NORTH);
 		add(p_center);
 		
-		setPreferredSize(new Dimension(380, 500));
+		setPreferredSize(new Dimension(330, 600));
 		setVisible(true);
 	}
 }

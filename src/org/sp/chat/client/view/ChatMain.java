@@ -17,10 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.text.DefaultCaret;
 
 public class ChatMain extends JFrame{
 	JPanel p_center;//각 컨텐츠 페이지들이 들어올 빈 영역
-	JPanel p_south;//내비가 들어올 영역
+	JPanel p_west;//내비가 들어올 영역
 	String[] naviIcon= {"res/friend.png","res/chatting.png","res/mypage.png"};
 	ArrayList<JLabel> navi;//아이콘 이미지를 담게 될 라벨들
 	
@@ -35,7 +36,7 @@ public class ChatMain extends JFrame{
 
 	public ChatMain() {
 		p_center = new JPanel();
-		p_south = new JPanel();
+		p_west = new JPanel();
 		pages = new Page[3];
 		
 		//페이지 생성
@@ -43,10 +44,11 @@ public class ChatMain extends JFrame{
 		pages[CHATTING] = new ChattingPage();
 		pages[MYPAGE] = new MyPage();
 		
+		p_west.setLayout(null);
 		
 		//스타일
-		//p_south.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		p_south.setPreferredSize(new Dimension(380,50));
+		//p_west.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
+		p_west.setPreferredSize(new Dimension(50,600));
 		
 		
 		//조립
@@ -55,7 +57,7 @@ public class ChatMain extends JFrame{
 		}
 		createNavi();
 		add(p_center);
-		add(p_south, BorderLayout.SOUTH);
+		add(p_west, BorderLayout.WEST);
 		
 		setSize(380,600);
 		setVisible(true);
@@ -72,7 +74,6 @@ public class ChatMain extends JFrame{
 				//클릭시 해당 페이지 보여주기
 				public void mouseClicked(MouseEvent e) {
 					int index=navi.indexOf(e.getSource());//이벤트를 일으킨 JLabel이 몇번째 인지
-					System.out.println("클릭");
 					showHide(index);
 				}
 			});
@@ -90,11 +91,11 @@ public class ChatMain extends JFrame{
 			try {
 				BufferedImage buffImg = ImageIO.read(url);
 				Image image=buffImg;
-				image=image.getScaledInstance(40, 25, Image.SCALE_SMOOTH);
+				image=image.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
 				JLabel la_icon = new JLabel(new ImageIcon(image));
-				la_icon.setPreferredSize(new Dimension(115,40));
+				la_icon.setBounds(0, 50+(50*i), 50, 50);
 				navi.add(la_icon);
-				p_south.add(la_icon);
+				p_west.add(la_icon);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
